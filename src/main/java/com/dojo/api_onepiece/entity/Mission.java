@@ -3,10 +3,12 @@ package com.dojo.api_onepiece.entity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
+@NoArgsConstructor
 @AllArgsConstructor
 @Entity
 @Table(name = "Mission")
@@ -14,7 +16,7 @@ public class Mission {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private final Long id;
+    private Long id;
 
     @Column
     @Enumerated(EnumType.STRING)
@@ -24,7 +26,7 @@ public class Mission {
     @Enumerated(EnumType.STRING)
     private TypeOfMission typeMission;
 
-    @Column
+    @Column(updatable = false) //campo não pode ser alterado
     @Enumerated(EnumType.STRING)
     private StatusMission statusMission;
 

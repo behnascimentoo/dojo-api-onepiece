@@ -1,6 +1,7 @@
 package com.dojo.api_onepiece.dto;
 
 import com.dojo.api_onepiece.entity.DangerLevel;
+import com.dojo.api_onepiece.entity.StatusMission;
 import com.dojo.api_onepiece.entity.TypeOfMission;
 import jakarta.validation.constraints.NotBlank;
 
@@ -10,5 +11,8 @@ public record CreateMissionDto(
         DangerLevel dangerLevel,
 
         @NotBlank(message = "Tipo da missão não pode estar em branco")
-        TypeOfMission typeOfMission
+        TypeOfMission typeOfMission,
+
+        @NotBlank(message = "O status não pode esta vazio")
+        StatusMission statusMission
 ) {}

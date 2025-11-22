@@ -6,7 +6,7 @@ import com.dojo.api_onepiece.entity.StatusPirate;
 
 public record ToPirateResponseDto(
 
-        String id,
+        Long id,
         String name,
         RacePirate racePirate,
         CrewPirate crewPirate,

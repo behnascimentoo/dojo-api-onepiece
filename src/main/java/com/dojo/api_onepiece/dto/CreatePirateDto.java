@@ -1,6 +1,7 @@
 package com.dojo.api_onepiece.dto;
 
 import com.dojo.api_onepiece.entity.CrewPirate;
+import com.dojo.api_onepiece.entity.RacePirate;
 import jakarta.validation.constraints.NotBlank;
 
 public record CreatePirateDto(
@@ -9,7 +10,7 @@ public record CreatePirateDto(
         String name,
 
         @NotBlank(message = "A raça não pode estar em branco")
-        String race,
+        RacePirate race,
 
         @NotBlank(message = "A tripulação não pode estar em branco")
         CrewPirate crew

@@ -8,11 +8,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @AllArgsConstructor
 @Controller
-@RequestMapping("/pirata")
-public class PirataController {
+@RequestMapping("pirate")
+//https://localhost:8080/pirate
+public class PirateController {
 
-    private final PirateService pirataService;
-    private CreatePirateDto pirataDto;
+    private final PirateService pirateService;
+
 
 
 }

@@ -6,8 +6,8 @@ import org.springframework.stereotype.Controller;
 
 @AllArgsConstructor
 @Controller
-public class MissaoController {
+public class MissionController {
 
-    private final MissionService missaoService;
+    private final MissionService missionService;
 
 }

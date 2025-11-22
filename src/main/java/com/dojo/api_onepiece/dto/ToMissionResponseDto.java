@@ -6,6 +6,7 @@ import com.dojo.api_onepiece.entity.TypeOfMission;
 
 public record ToMissionResponseDto(
 
+        Long id,
         DangerLevel dangerLevel,
         TypeOfMission typeOfMission,
         StatusMission statusMission
