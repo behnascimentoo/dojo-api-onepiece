@@ -1,6 +1,6 @@
 package com.dojo.api_onepiece.entity;
 
-public enum TripulacaoPirata {
+public enum CrewPirate {
     CHAPEU_DE_PALHA,
     BARBA_BRANCA,
     BUGGY,

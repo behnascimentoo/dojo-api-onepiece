@@ -1,6 +1,6 @@
 package com.dojo.api_onepiece.entity;
 
-public enum StatusPirata {
+public enum StatusPirate {
     ATIVO,
     CAPTURADO
 }

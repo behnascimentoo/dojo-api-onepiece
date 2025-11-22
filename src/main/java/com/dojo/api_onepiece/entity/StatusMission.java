@@ -1,6 +1,6 @@
 package com.dojo.api_onepiece.entity;
 
-public enum StatusMissao {
+public enum StatusMission {
     CONCLUIDA,
     EM_ANDAMENTO
 }

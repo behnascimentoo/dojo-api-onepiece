@@ -1,6 +1,6 @@
 package com.dojo.api_onepiece.entity;
 
-public enum RacaPirata {
+public enum RacePirate {
     HUMANO,
     CIBORGUE,
     MINK,
