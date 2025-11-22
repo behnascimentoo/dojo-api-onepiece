@@ -7,14 +7,14 @@ import com.dojo.api_onepiece.entity.Mission;
 import com.dojo.api_onepiece.exceptions.MissionNotFoundException;
 import com.dojo.api_onepiece.mappers.MissionMapper;
 import com.dojo.api_onepiece.repository.MissionRepository;
-import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-@NoArgsConstructor
 @Service
+@RequiredArgsConstructor
 public class MissionServiceImp implements MissionService{
 
     private MissionRepository missionRepository;
@@ -28,7 +28,7 @@ public class MissionServiceImp implements MissionService{
 
     @Override
     public ToMissionResponseDto updateMission(Long id, UpdateMissionDto dto) {
-        Mission mission = missionRepository.findBy(id)
+        Mission mission = missionRepository.findById(id)
                 .orElseThrow(()-> MissionNotFoundException.byId(id));
         missionMapper.updateEntity(mission, dto);
         missionRepository.save(mission);
@@ -37,7 +37,7 @@ public class MissionServiceImp implements MissionService{
 
     @Override
     public ToMissionResponseDto getMissionById(Long id) {
-        return missionRepository.findBy(id)
+        return missionRepository.findById(id)
                 .map(missionMapper::toDto)
                 .orElseThrow(()-> MissionNotFoundException.byId(id));
     }

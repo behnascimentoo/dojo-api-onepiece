@@ -7,5 +7,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.Optional;
 
 public interface PirateRepository extends JpaRepository<Pirate, Long> {
-    Optional<RacePirate> findByRace(RacePirate racePirate);
+    Optional<Pirate> findByRace(RacePirate racePirate);
 }

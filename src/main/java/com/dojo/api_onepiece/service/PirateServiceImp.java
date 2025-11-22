@@ -8,15 +8,15 @@ import com.dojo.api_onepiece.entity.RacePirate;
 import com.dojo.api_onepiece.exceptions.PirateNotFoundException;
 import com.dojo.api_onepiece.mappers.PirateMapper;
 import com.dojo.api_onepiece.repository.PirateRepository;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-@NoArgsConstructor
+
 @Service
+@RequiredArgsConstructor
 public class PirateServiceImp implements PirateService{
 
     private PirateRepository pirateRepository;
