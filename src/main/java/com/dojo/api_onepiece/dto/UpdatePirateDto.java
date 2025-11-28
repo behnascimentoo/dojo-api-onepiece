@@ -6,8 +6,8 @@ import com.dojo.api_onepiece.entity.StatusPirate;
 public record UpdatePirateDto(
 
         String name,
-        RacePirate racePirate,
-        String crewPirate,
+        RacePirate race,
+        String crew,
         StatusPirate statusPirate
 
 ) {}

@@ -15,7 +15,7 @@ public interface PirateService {
 
     PirateResponseDto getPirateById(Long id);
 
-    PirateResponseDto getPirateByRace(RacePirate racePirate);
+    List<PirateResponseDto> findPiratesByRace(RacePirate racePirate);
 
     List<PirateResponseDto> listOfAllPirates();
 

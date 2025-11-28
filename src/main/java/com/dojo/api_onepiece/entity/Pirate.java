@@ -31,6 +31,5 @@ public class Pirate {
 
     @Enumerated(EnumType.STRING)
     @Column
-    private StatusPirate status;
-
+    private StatusPirate statusPirate;
 }

@@ -5,6 +5,7 @@ import com.dojo.api_onepiece.dto.PirateResponseDto;
 import com.dojo.api_onepiece.dto.UpdatePirateDto;
 import com.dojo.api_onepiece.entity.RacePirate;
 import com.dojo.api_onepiece.service.PirateService;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,14 +24,14 @@ public class PirateController {
 
     //Criar Pirata
     @PostMapping
-    public ResponseEntity<Void> createPirate (@RequestBody CreatePirateDto createPirateDto){
+    public ResponseEntity<Void> createPirate (@Valid @RequestBody CreatePirateDto createPirateDto){
         pirateService.savePirate(createPirateDto);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     //Atualizar Pirata
     @PutMapping("/id/{id}")
-    public ResponseEntity<PirateResponseDto> updatePirate(@PathVariable Long id, @RequestBody UpdatePirateDto updatePirateDto){
+    public ResponseEntity<PirateResponseDto> updatePirate(@PathVariable Long id, @Valid @RequestBody UpdatePirateDto updatePirateDto){
         PirateResponseDto updatePirate = pirateService.updatePirate(id, updatePirateDto);
         return ResponseEntity.ok(updatePirate);
     }
@@ -43,17 +44,11 @@ public class PirateController {
     }
 
     //Buscar pirata por raça
-    @GetMapping("/{race}")
-    public ResponseEntity<PirateResponseDto> searchPirateByRace(@PathVariable RacePirate racePirate){
-        PirateResponseDto pirate = pirateService.getPirateByRace(racePirate);
-        return ResponseEntity.ok(pirate);
-    }
-
-    //Listar todos os piratas
+    //http://localhost:8080/pirate?racePirate=HUMANO
     @GetMapping()
-    public ResponseEntity<List<PirateResponseDto>> listPirates() {
-        List<PirateResponseDto> pirates = pirateService.listOfAllPirates();
-        return ResponseEntity.ok(pirates);
+    public ResponseEntity<List<PirateResponseDto>> listPirates(@RequestParam(required = false) RacePirate racePirate){
+        List<PirateResponseDto> list = racePirate == null ? pirateService.listOfAllPirates() : pirateService.findPiratesByRace(racePirate);
+        return ResponseEntity.ok(list);
     }
 
     //Apagar Pirata
@@ -62,6 +57,5 @@ public class PirateController {
         pirateService.deletePirate(id);
         return ResponseEntity.ok().build();
     }
-
 
 }

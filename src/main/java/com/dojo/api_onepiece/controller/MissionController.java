@@ -6,6 +6,7 @@ import com.dojo.api_onepiece.dto.UpdateMissionDto;
 import com.dojo.api_onepiece.entity.DangerLevel;
 import com.dojo.api_onepiece.entity.StatusMission;
 import com.dojo.api_onepiece.service.MissionService;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,14 +24,14 @@ public class MissionController {
 
     //Criar Missão
     @PostMapping
-    public ResponseEntity<Void> createMission(@RequestBody CreateMissionDto createMissionDto) {
+    public ResponseEntity<Void> createMission(@Valid @RequestBody CreateMissionDto createMissionDto) {
         missionService.saveMission(createMissionDto);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     //Atualizar Missão
     @PutMapping("/id/{id}")
-    public ResponseEntity<MissionResponseDto> updateMisson(@PathVariable Long id, @RequestBody UpdateMissionDto updateMissionDto){
+    public ResponseEntity<MissionResponseDto> updateMisson(@PathVariable Long id,@Valid @RequestBody UpdateMissionDto updateMissionDto){
         MissionResponseDto updateMission = missionService.updateMission(id,updateMissionDto);
         return ResponseEntity.ok(updateMission);
     }
@@ -45,8 +46,8 @@ public class MissionController {
     //Listar todas as Missões
     @GetMapping()
     public ResponseEntity<List<MissionResponseDto>> listMissions(
-            @RequestParam StatusMission statusMission,
-            @RequestParam DangerLevel dangerLevel)
+            @RequestParam(required = false) StatusMission statusMission,
+            @RequestParam(required = false) DangerLevel dangerLevel)
     {
         List<MissionResponseDto> missions = null;
 

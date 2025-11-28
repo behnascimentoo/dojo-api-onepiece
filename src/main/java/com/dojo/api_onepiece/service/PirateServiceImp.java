@@ -20,8 +20,8 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class PirateServiceImp implements PirateService{
 
-    private PirateRepository pirateRepository;
-    private PirateMapper pirateMapper;
+    private final PirateRepository pirateRepository;
+    private final PirateMapper pirateMapper;
 
     @Override
     public void savePirate(CreatePirateDto createPirateDto) {
@@ -46,11 +46,15 @@ public class PirateServiceImp implements PirateService{
     }
 
     @Override
-    public PirateResponseDto getPirateByRace(RacePirate racePirate) {
-        return pirateRepository.findByRace(racePirate)
-                .map(pirateMapper::toDto)
+    public List<PirateResponseDto> findPiratesByRace(RacePirate racePirate) {
+        var pirates = pirateRepository.findByRace(racePirate)
                 .orElseThrow(() -> RaceNotFoundException.byRace(racePirate));
+        return pirates
+                .stream()
+                .map(pirateMapper::toDto)
+                .collect(Collectors.toList());
     }
+
 
     @Override
     public List<PirateResponseDto> listOfAllPirates() {

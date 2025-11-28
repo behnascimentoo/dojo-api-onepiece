@@ -26,8 +26,11 @@ public class Mission {
     @Enumerated(EnumType.STRING)
     private TypeOfMission typeMission;
 
-    @Column(updatable = false) //campo não pode ser alterado
+    @Column()
     @Enumerated(EnumType.STRING)
     private StatusMission statusMission;
 
+    @OneToOne
+    @JoinColumn(name = "pirate_id")
+    private Pirate pirate;
 }

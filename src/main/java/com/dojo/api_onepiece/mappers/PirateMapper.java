@@ -23,14 +23,14 @@ public class PirateMapper {
                 pirate.getName(),
                 pirate.getRace(),
                 pirate.getCrewPirate(),
-                pirate.getStatus()
+                pirate.getStatusPirate()
         );
     }
 
     public void updateEntity(Pirate pirate, UpdatePirateDto dto){
         pirate.setName(dto.name());
-        pirate.setRace(dto.racePirate());
-        pirate.setCrewPirate(dto.crewPirate());
-        pirate.setStatus(dto.statusPirate());
+        pirate.setRace(dto.race());
+        pirate.setCrewPirate(dto.crew());
+        pirate.setStatusPirate(dto.statusPirate());
     }
 }

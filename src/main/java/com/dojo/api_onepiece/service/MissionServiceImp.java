@@ -19,8 +19,8 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class MissionServiceImp implements MissionService{
 
-    private MissionRepository missionRepository;
-    private MissionMapper missionMapper;
+    private final MissionRepository missionRepository;
+    private final MissionMapper missionMapper;
 
     @Override
     public void saveMission(CreateMissionDto createMissionDto) {
