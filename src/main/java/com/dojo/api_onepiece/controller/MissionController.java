@@ -22,28 +22,24 @@ public class MissionController {
 
     private final MissionService missionService;
 
-    //Criar Missão
     @PostMapping
     public ResponseEntity<Void> createMission(@Valid @RequestBody CreateMissionDto createMissionDto) {
         missionService.saveMission(createMissionDto);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
-    //Atualizar Missão
     @PutMapping("/id/{id}")
     public ResponseEntity<MissionResponseDto> updateMisson(@PathVariable Long id,@Valid @RequestBody UpdateMissionDto updateMissionDto){
         MissionResponseDto updateMission = missionService.updateMission(id,updateMissionDto);
         return ResponseEntity.ok(updateMission);
     }
 
-    //Buscar Missão por id
     @GetMapping("/id/{id}")
     public ResponseEntity<MissionResponseDto> searchById(@PathVariable Long id){
         MissionResponseDto mission = missionService.getMissionById(id);
         return ResponseEntity.ok(mission);
     }
 
-    //Listar todas as Missões
     @GetMapping()
     public ResponseEntity<List<MissionResponseDto>> listMissions(
             @RequestParam(required = false) StatusMission statusMission,

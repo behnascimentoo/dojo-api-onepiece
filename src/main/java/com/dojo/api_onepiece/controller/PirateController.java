@@ -21,29 +21,24 @@ public class PirateController {
 
     private final PirateService pirateService;
 
-
-    //Criar Pirata
     @PostMapping
     public ResponseEntity<Void> createPirate (@Valid @RequestBody CreatePirateDto createPirateDto){
         pirateService.savePirate(createPirateDto);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
-    //Atualizar Pirata
     @PutMapping("/id/{id}")
     public ResponseEntity<PirateResponseDto> updatePirate(@PathVariable Long id, @Valid @RequestBody UpdatePirateDto updatePirateDto){
         PirateResponseDto updatePirate = pirateService.updatePirate(id, updatePirateDto);
         return ResponseEntity.ok(updatePirate);
     }
 
-    //Buscar Pirata por id
     @GetMapping("/id/{id}")
     public ResponseEntity<PirateResponseDto> searchPirataById(@PathVariable Long id){
         PirateResponseDto pirate = pirateService.getPirateById(id);
         return ResponseEntity.ok(pirate);
     }
 
-    //Buscar pirata por raça
     //http://localhost:8080/pirate?racePirate=HUMANO
     @GetMapping()
     public ResponseEntity<List<PirateResponseDto>> listPirates(@RequestParam(required = false) RacePirate racePirate){
@@ -51,7 +46,6 @@ public class PirateController {
         return ResponseEntity.ok(list);
     }
 
-    //Apagar Pirata
     @DeleteMapping("/id/{id}")
     public ResponseEntity<Void> removePirate(@PathVariable Long id){
         pirateService.deletePirate(id);

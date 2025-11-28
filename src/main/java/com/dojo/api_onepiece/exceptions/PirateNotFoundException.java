@@ -1,7 +1,5 @@
 package com.dojo.api_onepiece.exceptions;
 
-import com.dojo.api_onepiece.entity.RacePirate;
-
 public class PirateNotFoundException extends RuntimeException {
   public PirateNotFoundException(String message) {
     super(message);
