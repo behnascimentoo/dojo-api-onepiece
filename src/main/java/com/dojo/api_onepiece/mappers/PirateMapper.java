@@ -1,7 +1,7 @@
 package com.dojo.api_onepiece.mappers;
 
 import com.dojo.api_onepiece.dto.CreatePirateDto;
-import com.dojo.api_onepiece.dto.ToPirateResponseDto;
+import com.dojo.api_onepiece.dto.PirateResponseDto;
 import com.dojo.api_onepiece.dto.UpdatePirateDto;
 import com.dojo.api_onepiece.entity.Pirate;
 import org.springframework.stereotype.Component;
@@ -17,8 +17,8 @@ public class PirateMapper {
         return pirate;
     }
 
-    public ToPirateResponseDto toDto(Pirate pirate){
-        return new ToPirateResponseDto(
+    public PirateResponseDto toDto(Pirate pirate){
+        return new PirateResponseDto(
                 pirate.getId(),
                 pirate.getName(),
                 pirate.getRace(),

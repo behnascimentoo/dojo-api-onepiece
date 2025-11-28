@@ -1,7 +1,7 @@
 package com.dojo.api_onepiece.mappers;
 
 import com.dojo.api_onepiece.dto.CreateMissionDto;
-import com.dojo.api_onepiece.dto.ToMissionResponseDto;
+import com.dojo.api_onepiece.dto.MissionResponseDto;
 import com.dojo.api_onepiece.dto.UpdateMissionDto;
 import com.dojo.api_onepiece.entity.Mission;
 import org.springframework.stereotype.Component;
@@ -17,8 +17,8 @@ public class MissionMapper {
         return mission;
     }
 
-    public ToMissionResponseDto toDto(Mission mission){
-        return new ToMissionResponseDto(
+    public MissionResponseDto toDto(Mission mission){
+        return new MissionResponseDto(
                         mission.getId(),
                 mission.getDangerLevel(),
                 mission.getTypeMission(),

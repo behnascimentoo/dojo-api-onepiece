@@ -1,7 +1,7 @@
 package com.dojo.api_onepiece.service;
 
 import com.dojo.api_onepiece.dto.CreatePirateDto;
-import com.dojo.api_onepiece.dto.ToPirateResponseDto;
+import com.dojo.api_onepiece.dto.PirateResponseDto;
 import com.dojo.api_onepiece.dto.UpdatePirateDto;
 import com.dojo.api_onepiece.entity.RacePirate;
 
@@ -11,13 +11,13 @@ public interface PirateService {
 
     void savePirate(CreatePirateDto createPirateDto);
 
-    ToPirateResponseDto updatePirate(Long id, UpdatePirateDto dto);
+    PirateResponseDto updatePirate(Long id, UpdatePirateDto dto);
 
-    ToPirateResponseDto getPirateById(Long id);
+    PirateResponseDto getPirateById(Long id);
 
-    ToPirateResponseDto getPirateByRace(RacePirate racePirate);
+    PirateResponseDto getPirateByRace(RacePirate racePirate);
 
-    List<ToPirateResponseDto> listOfAllPirates();
+    List<PirateResponseDto> listOfAllPirates();
 
     void deletePirate(Long id);
 

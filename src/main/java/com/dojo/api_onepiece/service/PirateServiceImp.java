@@ -1,11 +1,12 @@
 package com.dojo.api_onepiece.service;
 
 import com.dojo.api_onepiece.dto.CreatePirateDto;
-import com.dojo.api_onepiece.dto.ToPirateResponseDto;
+import com.dojo.api_onepiece.dto.PirateResponseDto;
 import com.dojo.api_onepiece.dto.UpdatePirateDto;
 import com.dojo.api_onepiece.entity.Pirate;
 import com.dojo.api_onepiece.entity.RacePirate;
 import com.dojo.api_onepiece.exceptions.PirateNotFoundException;
+import com.dojo.api_onepiece.exceptions.RaceNotFoundException;
 import com.dojo.api_onepiece.mappers.PirateMapper;
 import com.dojo.api_onepiece.repository.PirateRepository;
 import lombok.RequiredArgsConstructor;
@@ -29,7 +30,7 @@ public class PirateServiceImp implements PirateService{
     }
 
     @Override
-    public ToPirateResponseDto updatePirate(Long id, UpdatePirateDto dto) {
+    public PirateResponseDto updatePirate(Long id, UpdatePirateDto dto) {
         Pirate pirate = pirateRepository.findById(id)
                 .orElseThrow(() -> PirateNotFoundException.byId(id));
         pirateMapper.updateEntity(pirate, dto);
@@ -38,21 +39,21 @@ public class PirateServiceImp implements PirateService{
     }
 
     @Override
-    public ToPirateResponseDto getPirateById(Long id) {
+    public PirateResponseDto getPirateById(Long id) {
         return pirateRepository.findById(id)
                 .map(pirateMapper::toDto)
                 .orElseThrow(() -> PirateNotFoundException.byId(id));
     }
 
     @Override
-    public ToPirateResponseDto getPirateByRace(RacePirate racePirate) {
+    public PirateResponseDto getPirateByRace(RacePirate racePirate) {
         return pirateRepository.findByRace(racePirate)
                 .map(pirateMapper::toDto)
-                .orElseThrow(() -> PirateNotFoundException.byRace(racePirate));
+                .orElseThrow(() -> RaceNotFoundException.byRace(racePirate));
     }
 
     @Override
-    public List<ToPirateResponseDto> listOfAllPirates() {
+    public List<PirateResponseDto> listOfAllPirates() {
         return pirateRepository.findAll()
                 .stream()
                 .map(pirateMapper::toDto)

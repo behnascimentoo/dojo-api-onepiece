@@ -4,7 +4,7 @@ import com.dojo.api_onepiece.entity.DangerLevel;
 import com.dojo.api_onepiece.entity.StatusMission;
 import com.dojo.api_onepiece.entity.TypeOfMission;
 
-public record ToMissionResponseDto(
+public record MissionResponseDto(
 
         Long id,
         DangerLevel dangerLevel,

@@ -1,0 +1,29 @@
+Cada pirata deve possuir:
+
+✅ ID
+✅ Nome
+✅ Raça: Humano | Ciborgue | Mink | Anão | Tritão
+✅ Tripulação: (ex: Chapéus de Palha, Barba Branca, Buggy, etc.)
+✅ Status: Ativo ou Capturado
+📜 Endpoints obrigatórios
+✅ Criar um novo pirata
+✅ Atualizar informações de um pirata
+✅ Buscar pirata por ID
+✅ Buscar piratas por raça
+✅ Listar todos os piratas
+✅ Apagar registro de um pirata
+
+Cada missão possui:
+
+✅ ID
+✅ Classificação (Danger Level): D | C | B | A | S (quanto maior, mais perigosa!)
+✅ Tipo de missão: Exploração | Batalha Naval | Saque
+✅ Status: Concluída | Em andamento
+📜 Endpoints obrigatórios
+✅ Criar missão
+✅ Atualizar missão
+✅ Buscar missão por ID
+✅ Listar todas as missões
+🪶 Consultas especiais
+✅ GET /missao/danger/{nivel} → Buscar por nível de perigo
+✅ GET /missao/status/{status} → Buscar por status da missão

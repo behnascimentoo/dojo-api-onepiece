@@ -12,7 +12,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "Pirate")
+@Table(name = "tb_pirate")
 public class Pirate {
 
     @Id
@@ -26,9 +26,8 @@ public class Pirate {
     @Column(nullable = false)
     private RacePirate race;
 
-    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private CrewPirate crewPirate;
+    private String crewPirate;
 
     @Enumerated(EnumType.STRING)
     @Column

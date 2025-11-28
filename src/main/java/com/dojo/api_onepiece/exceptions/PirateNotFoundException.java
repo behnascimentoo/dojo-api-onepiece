@@ -8,10 +8,7 @@ public class PirateNotFoundException extends RuntimeException {
   }
 
   public static PirateNotFoundException byId(Long id){
-    return new PirateNotFoundException("Pirata não encontrado para o id: " + id);
+    return new PirateNotFoundException("Raça não encontrada para o id: " + id);
   }
 
-  public static PirateNotFoundException byRace(RacePirate racePirate){
-    return new PirateNotFoundException("Pirata não encontrado pela raça: " + racePirate);
-  }
 }

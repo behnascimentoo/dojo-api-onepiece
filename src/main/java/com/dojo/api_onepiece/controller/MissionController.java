@@ -1,20 +1,22 @@
 package com.dojo.api_onepiece.controller;
 
 import com.dojo.api_onepiece.dto.CreateMissionDto;
-import com.dojo.api_onepiece.dto.ToMissionResponseDto;
+import com.dojo.api_onepiece.dto.MissionResponseDto;
 import com.dojo.api_onepiece.dto.UpdateMissionDto;
+import com.dojo.api_onepiece.entity.DangerLevel;
+import com.dojo.api_onepiece.entity.StatusMission;
 import com.dojo.api_onepiece.service.MissionService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @AllArgsConstructor
-@Controller
-@RequestMapping("mission")
+@RestController
+@RequestMapping("/mission")
+//http://localhost:8080/mission
 public class MissionController {
 
     private final MissionService missionService;
@@ -27,23 +29,38 @@ public class MissionController {
     }
 
     //Atualizar Missão
-    @PutMapping("/{id}")
-    public ResponseEntity<ToMissionResponseDto> updateMisson(@PathVariable Long id,@RequestBody UpdateMissionDto updateMissionDto){
-        ToMissionResponseDto updateMission = missionService.updateMission(id,updateMissionDto);
+    @PutMapping("/id/{id}")
+    public ResponseEntity<MissionResponseDto> updateMisson(@PathVariable Long id, @RequestBody UpdateMissionDto updateMissionDto){
+        MissionResponseDto updateMission = missionService.updateMission(id,updateMissionDto);
         return ResponseEntity.ok(updateMission);
     }
 
     //Buscar Missão por id
-    @GetMapping("/{id}")
-    public ResponseEntity<ToMissionResponseDto> searchById(@PathVariable Long id){
-        ToMissionResponseDto mission = missionService.getMissionById(id);
+    @GetMapping("/id/{id}")
+    public ResponseEntity<MissionResponseDto> searchById(@PathVariable Long id){
+        MissionResponseDto mission = missionService.getMissionById(id);
         return ResponseEntity.ok(mission);
     }
 
     //Listar todas as Missões
     @GetMapping()
-    public ResponseEntity<List<ToMissionResponseDto>> listMissions() {
-        List<ToMissionResponseDto> missions = missionService.listOfAllMissions();
-        return ResponseEntity.ok(missions);
+    public ResponseEntity<List<MissionResponseDto>> listMissions(
+            @RequestParam StatusMission statusMission,
+            @RequestParam DangerLevel dangerLevel)
+    {
+        List<MissionResponseDto> missions = null;
+
+        if(dangerLevel != null) {
+            missions = missionService.listAllDangerLevel(dangerLevel);
+        }
+        if(statusMission != null){
+            missions = missionService.listAllStatusMission(statusMission);
+        }
+        if(dangerLevel == null && statusMission == null){
+            missions = missionService.listOfAllMissions();
+        }
+        
+        return ResponseEntity.status(HttpStatus.OK).body(missions);
     }
+
 }
